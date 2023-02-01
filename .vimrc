@@ -6,6 +6,7 @@ syntax on
 set number
 set cursorline
 set cursorcolumn
+set noerrorbells
 set shiftwidth=4
 set tabstop=4
 set expandtab
@@ -27,7 +28,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " Plugin code goes here.
 call plug#begin("~/.vim/plugged")
     Plug 'preservim/nerdtree'
-    Plug 'LunarWatcher/auto-pairs'
+    Plug 'Raimondi/delimitMate'
 call plug#end()
 
 " }}}
@@ -41,6 +42,36 @@ nnoremap <silent><c-s-tab> :bp<cr>
 nnoremap <silent><c-b> :NERDTreeToggle<cr>
 nnoremap <A-Up> :m . -2<CR>==
 nnoremap <A-Down> :m . +1<CR>==
+
+" # Close brackets automatically, with return
+inoremap {<cr> {<cr>}<C-O><S-O>
+inoremap (<cr> (<cr>)<c-o><s-o>
+inoremap [<cr> [<cr>]<c-o><s-o>
+" # Close brackets without return
+inoremap ( ()<left>
+inoremap { {}<left>
+inoremap [ []<left>
+" # Two cases below are covered by inoremap <exp>
+" inoremap " ""<left>
+" inoremap ' ''<left>
+" # If you close a bracket that is already closed, it overwrites
+inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "'" ? "\<Right>" : "''<left>"
+inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"<left>"
+" # enclose a word in normal mode with "'({[
+nnoremap ' mmbi'<esc>ea'<esc>`m<right>
+nnoremap " mmbi"<esc>ea"<esc>`m<right>
+nnoremap ( mmbi(<esc>ea)<esc>`m<right>
+nnoremap { mmbi{<esc>ea}<esc>`m<right>
+nnoremap [ mmbi[<esc>ea]<esc>`m<right>
+" # enclose a selection in visual mode with "'({[
+vnoremap ' <Esc>`<i'<Esc>`>a<right>'<Esc>
+vnoremap " <Esc>`<i"<Esc>`>a<right>"<Esc>
+vnoremap ( <Esc>`<i(<Esc>`>a<right>)<Esc>
+vnoremap { <Esc>`<i{<Esc>`>a<right>}<Esc>
+vnoremap [ <Esc>`<i[<Esc>`>a<right>]<Esc>
 
 " }}}
 
