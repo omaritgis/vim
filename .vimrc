@@ -102,4 +102,13 @@ set statusline+=\ >>
 set statusline+=%=
 set statusline+=\ <<
 set statusline+=\ >>
+set statusline+=\ %m
+set statusline+=%=
+set statusline+=\ %1*\ 
+set statusline+=\ Line:\ %l
+set statusline+=\ Col:\ %c
+set statusline+=\ ::
+set statusline+=\ %n
+                                                                                                                                                                
+hi User1 ctermbg=blue ctermfg=white
 " }}}
