@@ -1,0 +1,33 @@
+Move forward: 
+- Skip one word: w
+- Skip to the last of one word: e
+- Move to the end of the line: $ 
+- Move to bottom of file: L
+Move backward: 
+- Move one word: b
+- Move to the beginning of the line: 0
+- Move to top of file: gg
+
+Undo: u
+
+Insert at the end of the line: A
+Open a new line below the current: o
+Open a new line above the current: O
+
+Shift text right: >
+Shift text left: <
+Copy marked text: y
+Copy a line: yy
+Paste after cursor: p
+Paste before cursor: P
+
+Delete all lines containing pattern: g/{pattern}/d
+Delete all lines not containing pattern: g!/{pattern}/d
+Replace all old with new in the file: %s/old/new/gc
+
+Search for pattern: /{pattern}
+Move to next search match: n
+Move to previous search match: N
+
+Open new empty file: new
+Make all windows equal height and width: Ctrl+w=
