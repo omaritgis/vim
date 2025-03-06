@@ -3,6 +3,7 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
+set mouse=r
 set number
 set cursorline
 set cursorcolumn
@@ -22,6 +23,7 @@ set history=1000
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pyc,*.exe,*.flv,*.img,*.xlsx
+command! CheatSheet execute 'help' | execute 'wincmd J' | execute 'resize ' . float2nr(&lines * 0.3) | execute 'e /home/tunchi/.vim/cheatsheet.txt'
 
 " PLUGINS ---------------------------------------------------------------- {{{
 
